@@ -4,6 +4,7 @@ import "../styles/carta.css";
 
 
 function Card({name,image,genres,rating}) {
+  
   var regexUrl = /[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/;
 
   return (

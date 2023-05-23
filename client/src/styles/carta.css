@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 16px;
   border: rgba(204, 133, 2, 0.5) solid 5px ;
   background-color: rgb(36, 35, 35);
   cursor: pointer;
 }
 .cardImg{
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .nameContainer{
@@ -27,7 +27,7 @@
   color: aliceblue;
   text-decoration: none;
   margin-top: 50px; 
-  box-shadow: 0 4px 20px 0 rgba(141, 177, 206, 0.171), 0 6px 20px 0 rgba(255, 253, 253, 0.199);
+  text-shadow: 0 0 30px;
  
 }
 .genreContainer{

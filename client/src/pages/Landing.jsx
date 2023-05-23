@@ -6,6 +6,8 @@ import Home from './Home';
 
 function Landing() {
   return (
+    
+    
     <div id='landing'>
 
     <Link to="/home">

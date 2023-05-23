@@ -29,16 +29,23 @@ try{
    if(name){
 
         const nombre = await byName(name);
+           
+          const api = nombre.filter(e=>e.name.toLowerCase().includes(e.name.toLowerCase()));              
+
         const infoName = await getDbInfo();
+
          const infoDb = infoName.filter(e=>e.name.toLowerCase().includes(e.name.toLowerCase()))
-        let infoAll = infoDb.concat(nombre)
+       
+         let infoAll = infoDb.concat(api)   
+
+         
        res.status(200).send(infoAll); 
        
-    }else if(!name){
+      }else if(!name){
       
-      let data = await getAll();
+      // let data = await getAll();   // aca aprendi que el orden si imoporta :,)
    
-      res.status(200).send(data);
+      res.status(200).send(infoTotal);
    
     }else{
       res.status(404);
@@ -76,7 +83,7 @@ if(dato){
 
 router.get("/genres",async(req,res)=>{
   try{
-    let genres =  await axios.get("https://api.rawg.io/api/genres?key=df842e2ebd5649b3b3f2489270fee95f");
+    let genres =  await axios.get("https://api.rawg.io/api/genres?key=02a233bb3caa405db7455ff5f9d980a9");
 
   let resultado = await genres.data.results.map(e=> e.name); // en resultado  me guardo cada nombre de genero 
  

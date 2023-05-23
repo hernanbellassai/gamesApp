@@ -1,6 +1,8 @@
 .firstContainer{
+ 
   height: 100vh;
-  margin-bottom: 10rem;
+  width: 100vw;
+  
   background-color: rgb(73, 73, 73);
 }
 

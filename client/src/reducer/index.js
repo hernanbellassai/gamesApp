@@ -116,11 +116,7 @@ function rootReducer (state = initialState , action ){
          games: action.payload === "Games"? state.allgames : info 
           }
                 
-          case "CLEAN_DETAIL":
-            return{
-              ...state,
-              detail:[]
-            }
+        
                
         
         

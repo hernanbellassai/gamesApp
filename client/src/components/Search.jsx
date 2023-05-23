@@ -20,12 +20,12 @@ function handleClick(e){                           //f  desp validar
   if(search){
     dispatch(getName(search)) ///como un boludo le pasaba el e y no el search entonces siempre buscaba otra cosa 
   }
+  
 }
-  
 
 
-  
  
+  
  
 function handleChange(e){
   e.preventDefault();

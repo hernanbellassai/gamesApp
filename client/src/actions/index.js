@@ -16,7 +16,7 @@ import axios from "axios";
 
   }
 
-  export function getName (name){
+  export function getName(name){
 
    return async function (dispatch){
     let info = await axios.get(`http://localhost:3001/games?name=${name}`);
@@ -109,9 +109,5 @@ export function orderByCreated (payload){
   }
 }  
 
-export function detail (){
-   return{
-    type:"CLEAN_DETAIL"
-   }
-}
+
 

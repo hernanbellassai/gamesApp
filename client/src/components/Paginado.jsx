@@ -5,7 +5,7 @@ function Paginado({gamesPerPage,games,paginado,}) {
     
     const pageNumber = [];
 
-    for (let i = 1 ; i<=Math.ceil(games/gamesPerPage); i++){
+    for (let i = 1 ; i<=Math.ceil(games/15); i++){
          
       pageNumber.push(i);
     }

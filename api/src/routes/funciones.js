@@ -4,8 +4,8 @@ const {Videogame,Genres} =require("../db");
 
 
 
-const infoApi = async() => {
-  let url = `https://api.rawg.io/api/games?key=df842e2ebd5649b3b3f2489270fee95f`
+const infoApi = async () => {
+  let url = `https://api.rawg.io/api/games?key=02a233bb3caa405db7455ff5f9d980a9`
   let videojuegos = []
   try {
       for(let i=0; i<5; i++) { //con un for recorro mi API, ya que es un arreglo, 5 veces
@@ -68,7 +68,7 @@ const getAll = async()=>{
 
   const apiData = await infoApi(); // meto en una variable todo lo d api
 const dbData = await getDbInfo();   // todo lo de database
-const allInfo = apiData.concat(dbData);  // aca en una constante concateno y guardo todo lo de base de datos y api
+const allInfo = dbData.concat(apiData);  // aca en una constante concateno y guardo todo lo de base de datos y api
 
   
   return allInfo;  //retorno tola da info concatenada 
@@ -78,7 +78,7 @@ const allInfo = apiData.concat(dbData);  // aca en una constante concateno y gua
 
 const byName = async (name)=>{
   
-   let videoGamesName = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=df842e2ebd5649b3b3f2489270fee95f`)
+   let videoGamesName = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=02a233bb3caa405db7455ff5f9d980a9`)
   //  console.log(videoGamesName);
 
 
@@ -104,7 +104,7 @@ const byName = async (name)=>{
 
 const byId = async (id) => {
    
-  const info = await axios.get(`https://api.rawg.io/api/games/${id}?key=df842e2ebd5649b3b3f2489270fee95f`)
+  const info = await axios.get(`https://api.rawg.io/api/games/${id}?key=02a233bb3caa405db7455ff5f9d980a9`)
   
    try {
       
@@ -139,7 +139,7 @@ const byId = async (id) => {
 
 const idDb = async (id) => {
   try {
-  return await Videogame.findByPk(id, {
+     return await Videogame.findByPk(id, {
       include: [{
           model: Genres, 
           atributes: ['name'], 
@@ -157,6 +157,7 @@ const idDb = async (id) => {
 const allId = async(id)=>{   //
   
   if(id.length > 9){
+
     const datoDbid = await idDb(id);
   
     const objJs = JSON.parse(JSON.stringify(datoDbid));

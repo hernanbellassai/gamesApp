@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {allGames , orderByName,getGenres,filterByGenres,orderByRating,orderByCreated, detail} from "../actions";
+import {allGames , orderByName,getGenres,filterByGenres,orderByRating,orderByCreated } from "../actions";
 import Card from '../components/Card';
 import Search from "../components/Search"
 import { Link } from 'react-router-dom';
@@ -22,10 +22,10 @@ function Home() {
   
   //////////////////// PAGINADO///////////////////
   const [currentPage , setCurrentPage] = useState(1); 
-  const [gamesPerPage , setGamesPerPage] =useState(15) // cuatos games por pagina 
+  // const [15 , setGamesPerPage] =useState(15) // cuatos games por pagina 
   
-  const indexOfLastGame = currentPage * gamesPerPage; //15 
-  const indexOffFirstGame = indexOfLastGame - gamesPerPage;//  juegos por pagina 15 - indice del ultimo 15  ==== 0 
+  const indexOfLastGame = currentPage * 15; //15 
+  const indexOffFirstGame = indexOfLastGame - 15;//  juegos por pagina 15 - indice del ultimo 15  ==== 0 
 
   const currentGames = games.slice(indexOffFirstGame,indexOfLastGame)
 
@@ -35,6 +35,7 @@ function Home() {
 
   const paginado =(pageNumber)=>{
     setCurrentPage(pageNumber)
+    console.log("hola mundo")
   }
 
   
@@ -69,9 +70,10 @@ dispatch(orderByCreated(e.target.value));
  }
 
  const handleFilterGenres=(e)=>{
-
-  dispatch(filterByGenres(e.target.value))
   
+  dispatch(filterByGenres(e.target.value));
+  paginado(1)
+    
  }
 
 
@@ -106,8 +108,8 @@ dispatch(orderByCreated(e.target.value));
             
                                  <div className='titulo'>
                                   
-                                  <div className='tituloo'>GAMES</div>
-                                  
+                                  <div className='tituloo'></div>
+                                
                                   </div>
        
         <div className='filtros-grande'>
@@ -178,17 +180,18 @@ dispatch(orderByCreated(e.target.value));
 
 
       <div className='paginado'>
-       <Paginado gamesPerPage={gamesPerPage} games={games.length} paginado={paginado}/>
+       <Paginado games={games.length} paginado={paginado}/>
      </div>    
    
-       <div className='homeCardContainer'>
+       <div className='homeCardContainer'  >
         
               { currentGames.length ? 
                 currentGames?.map(e=>{
                    return (   //si el return no renderiza 
                        e.Error? <h3 >VideoGame No Existe</h3>:   //si no encunetra que mande este mensaje y sino que renderise dichas cards 
-                <div className='homeCard' key={e.id}>
-                             <Link  style={{textDecoration:"none"}}    to={"/game/"+ e.id}>
+               
+               <div className='homeCard' key={e.id}>
+                             <Link  style={{textDecoration:"none"}}   to={"/game/"+ e.id}>
                         <Card  name={e.name} image={e.image} genres={e.genres} rating={e.rating} />
                             </Link>
                  </div>
